@@ -1,0 +1,22 @@
+Support of Phone states and painting of PhoneList
+
+[Source]
+
+source\Data\Phone.cs
+ - [add] public enum PhoneState
+ - Phone
+   - total rework
+   - own state [PhoneState]
+
+source\Data\ApplicationViewModel.cs
+ - [add] public override int SaveChanges(bool acceptAllChangesOnSuccess)
+
+source\MainWindow.xaml.cs
+ - Helper__CreateModel
+   - [add] DEBUG: check state of phones
+
+source\MainWindow.xaml
+ - <TextBlock FontSize="18" Text="{Binding Path=Title}" >
+   - [add] special styles for:
+      - PhoneState.IsNew
+      - PhoneState.IsChanged

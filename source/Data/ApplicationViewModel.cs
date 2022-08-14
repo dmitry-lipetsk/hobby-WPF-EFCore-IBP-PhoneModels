@@ -39,6 +39,24 @@ sealed class ApplicationViewModel:DbContext
  }//OnConfiguring
 
  //-----------------------------------------------------------------------
+ public override int SaveChanges(bool acceptAllChangesOnSuccess)
+ {
+  var r=base.SaveChanges(acceptAllChangesOnSuccess);
+
+  //TODO: Is it correct?
+
+  foreach(var p in this.Phones)
+  {
+   //It's expected!
+   Debug.Assert(p.ID.HasValue);
+
+   p.ResetState();
+  }//for p
+
+  return r;
+ }//SaveChanges
+
+ //-----------------------------------------------------------------------
  public static string Helper__GetCnStr()
  {
   return Helper__ReadConfValue(AppConsts.c_CfgParam__cn_str);

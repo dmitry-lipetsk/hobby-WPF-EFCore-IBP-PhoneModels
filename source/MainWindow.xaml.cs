@@ -168,6 +168,18 @@ public partial class MainWindow:Window
 
   model.dbset__Phones.Load();
 
+#if DEBUG
+  //
+  // I don't understand why it works. It's probably a miracle.
+  //
+
+  foreach(var p in model.Phones)
+  {
+   Debug.Assert(p.ID.HasValue);
+   Debug.Assert(p.State==PhoneState.NotChanged);
+  }
+#endif
+
   return model;
  }//Helper__CreateModel
 

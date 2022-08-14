@@ -51,7 +51,21 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock FontSize="18" Text="{Binding Path=Title}" />
+                            <TextBlock FontSize="18" Text="{Binding Path=Title}" >
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="Black" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding State}" Value="{x:Static local:PhoneState.IsNew}">
+                                                <Setter Property="Foreground" Value="Blue" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding State}" Value="{x:Static local:PhoneState.IsChanged}">
+                                                <Setter Property="Foreground" Value="Green" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
                             <TextBlock Text="{Binding Path=Company}" />
                             <TextBlock Text="{Binding Path=Price}" />
                             <TextBlock Text="{Binding Path=ID, StringFormat='ID: {0}', Converter={StaticResource Converter__NullToNo}}" />
