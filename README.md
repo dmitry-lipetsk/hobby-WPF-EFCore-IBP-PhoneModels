@@ -1,7 +1,7 @@
 # hobby-WPF-EFCore-IBP-PhoneModels
 Demo with usage of WPF, EFCore v6.0 and IBProvider
 
-It's an elementary application for editing a database with single table - PHONE. Just for fun.
+It's an elementary application for editing a database with a single table - PHONE. Just for fun.
 
 Techonlogies:
  - WPF
