@@ -5,7 +5,7 @@ It's an elementary application for editing a database with single table - PHONE.
 
 Techonlogies:
  - WPF
- - EntityFramework Core v6
+ - EntityFrameworkCore v6
  - Lcpi.EntityFrameworkCore.DataProvider.LcpiOleDb
  - LCPI.IBProvider.5
 
