@@ -24,6 +24,18 @@
         <Style TargetType="ListBox">
             <Setter Property="Margin" Value="5, 5, 0, 0" />
         </Style>
+
+        <Style TargetType="TextBlock" x:Key="PhoneList__Item">
+            <Setter Property="Foreground" Value="Black" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="{x:Static local:PhoneState.IsNew}">
+                    <Setter Property="Foreground" Value="Blue" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="{x:Static local:PhoneState.IsChanged}">
+                    <Setter Property="Foreground" Value="Green" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
 
     <Grid Margin="0,0,5,5">
@@ -51,24 +63,10 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock FontSize="18" Text="{Binding Path=Title}" >
-                                <TextBlock.Style>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="Foreground" Value="Black" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding State}" Value="{x:Static local:PhoneState.IsNew}">
-                                                <Setter Property="Foreground" Value="Blue" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding State}" Value="{x:Static local:PhoneState.IsChanged}">
-                                                <Setter Property="Foreground" Value="Green" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                            <TextBlock Text="{Binding Path=Company}" />
-                            <TextBlock Text="{Binding Path=Price}" />
-                            <TextBlock Text="{Binding Path=ID, StringFormat='ID: {0}', Converter={StaticResource Converter__NullToNo}}" />
+                            <TextBlock Text="{Binding Path=Title}" FontSize="18" Style="{StaticResource PhoneList__Item}"/>
+                            <TextBlock Text="{Binding Path=Company}" Style="{StaticResource PhoneList__Item}"/>
+                            <TextBlock Text="{Binding Path=Price}" Style="{StaticResource PhoneList__Item}"/>
+                            <TextBlock Text="{Binding Path=ID, StringFormat='ID: {0}', Converter={StaticResource Converter__NullToNo}}" Style="{StaticResource PhoneList__Item}"/>
                         </StackPanel>
                     </DataTemplate>
                  </ListBox.ItemTemplate>

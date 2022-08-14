@@ -20,3 +20,12 @@ source\MainWindow.xaml
    - [add] special styles for:
       - PhoneState.IsNew
       - PhoneState.IsChanged
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Applying of state-color to all the text of PhoneListItem [style: PhoneList__Item]
+
+[Source]
+
+work\source\MainWindow.xaml
+ - [add] style: PhoneList__Item
