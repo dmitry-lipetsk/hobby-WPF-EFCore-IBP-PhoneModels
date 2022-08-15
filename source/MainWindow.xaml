@@ -8,8 +8,9 @@
         Title="Phone Models" Height="350" Width="525" MinWidth="400" MinHeight="300" Closed="MainWindow1_Closed" Closing="MainWindow1_Closing">
 
     <Window.Resources>
-        <local:Converter__NullToNo       x:Key="Converter__NullToNo" />
-        <local:Converter__NullToFalse    x:Key="Converter__NullToFalse" />
+        <local:Converter__NullToNo             x:Key="Converter__NullToNo" />
+        <local:Converter__NullToFalse          x:Key="Converter__NullToFalse" />
+        <local:Converter__BinaryToImageSource  x:Key="Converter__BinaryToImageSource" />
 
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="14" />
@@ -22,6 +23,10 @@
             <Setter Property="Margin" Value="5, 5, 0, 0" />
         </Style>
         <Style TargetType="ListBox">
+            <Setter Property="Margin" Value="5, 5, 0, 0" />
+        </Style>
+
+        <Style TargetType="Image">
             <Setter Property="Margin" Value="5, 5, 0, 0" />
         </Style>
 
@@ -93,6 +98,19 @@
             <TextBlock Text="Price" />
             <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock x:Name="TextBox__ID" Text="{Binding ID, StringFormat='ID: {0}', Converter={StaticResource Converter__NullToNo}}" />
+            <StackPanel Orientation="Horizontal">
+                <Button Content="+"
+                    Grid.Column="0"
+                    Width="20"
+                    Command="{Binding ElementName=MainWindow1, Path=Command__AddPhoneImage}"
+                    CommandParameter="{Binding}"/>
+                <Button Content="-"
+                    Grid.Column="0"
+                    Width="20"
+                    Command="{Binding ElementName=MainWindow1, Path=Command__DelPhoneImage}"
+                    CommandParameter="{Binding}"/>
+            </StackPanel>
+            <Image Source="{Binding Image, Converter={StaticResource Converter__BinaryToImageSource}}"/>
         </StackPanel>
 
         <Grid Grid.Row="1" VerticalAlignment="Bottom" Grid.ColumnSpan="3">

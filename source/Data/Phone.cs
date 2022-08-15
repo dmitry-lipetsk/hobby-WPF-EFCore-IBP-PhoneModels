@@ -112,6 +112,23 @@ public class Phone:INotifyPropertyChanged
  }//Price
 
  //-----------------------------------------------------------------------
+ [Column("IMAGE", TypeName="BLOB SUB_TYPE BINARY")]
+ public byte[]? Image
+ {
+  get
+  {
+   return m_Image;
+  }//get
+
+  set
+  {
+   m_Image=value;
+
+   Helper__OnPropertyChanged(/*"Image"*/);
+  }//set
+ }//Price
+
+ //-----------------------------------------------------------------------
  private void Helper__OnPropertyChanged([CallerMemberName] string prop = "")
  {
   if(Object.ReferenceEquals(PropertyChanged,null))
@@ -141,6 +158,8 @@ public class Phone:INotifyPropertyChanged
  private string?  m_Title;
  private string?  m_Company;
  private int?     m_Price;
+
+ private byte[]?  m_Image;
 };//class Phone
 
 ////////////////////////////////////////////////////////////////////////////////

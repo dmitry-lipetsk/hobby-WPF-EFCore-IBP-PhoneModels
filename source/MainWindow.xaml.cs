@@ -19,6 +19,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
+using System.IO;
 
 namespace MVVM{
 ////////////////////////////////////////////////////////////////////////////////
@@ -60,6 +62,16 @@ public partial class MainWindow:Window
   m_newWindowCommand
    =new RelayCommand
      (Helper__Cmd__NewWindow__Execute);
+
+  m_addPhoneImageCommand
+   =new RelayCommand
+     (Helper__Cmd__AddPhoneImage__Execute,
+      Helper__Cmd__AddPhoneImage__CanExecute);
+
+  m_delPhoneImageCommand
+   =new RelayCommand
+     (Helper__Cmd__DelPhoneImage__Execute,
+      Helper__Cmd__DelPhoneImage__CanExecute);
 
   //----------------------------------------
   InitializeComponent();
@@ -106,6 +118,24 @@ public partial class MainWindow:Window
    return m_newWindowCommand;
   }//get
  }//Command__NewWindow
+
+ //-----------------------------------------------------------------------
+ public ICommand Command__AddPhoneImage
+ {
+  get
+  {
+   return m_addPhoneImageCommand;
+  }//get
+ }//Command__AddPhoneImage
+
+ //-----------------------------------------------------------------------
+ public ICommand Command__DelPhoneImage
+ {
+  get
+  {
+   return m_delPhoneImageCommand;
+  }//get
+ }//Command__DelPhoneImage
 
  //Event handlers --------------------------------------------------------
  private void Helper__EvModel__Saved(object? sender,SavedChangesEventArgs args)
@@ -300,6 +330,87 @@ public partial class MainWindow:Window
  }//Helper__Cmd__Save__CanExecute
 
  //-----------------------------------------------------------------------
+ private void Helper__Cmd__AddPhoneImage__Execute(object? parameter)
+ {
+  Debug.Assert(!Object.ReferenceEquals(parameter,null));
+  Debug.Assert(parameter is Phone);
+
+  OpenFileDialog openFileDialog=new OpenFileDialog();
+
+  openFileDialog.Filter=AppConsts.c_ImageFilter;
+
+  if(openFileDialog.ShowDialog()!=true)
+   return;
+
+  byte[] imageData;
+
+  try
+  {
+   imageData=File.ReadAllBytes(openFileDialog.FileName);
+  }
+  catch(Exception e)
+  {
+   MessageBox.Show(e.Message,e.Source,MessageBoxButton.OK,MessageBoxImage.Error);
+
+   return;
+  }//catch
+
+  var phone=(Phone)parameter;
+
+  phone.Image=imageData;
+ }//Helper__Cmd__AddPhoneImage__Execute
+
+ //-----------------------------------------------------------------------
+ private bool Helper__Cmd__AddPhoneImage__CanExecute(object? parameter)
+ {
+  if(Object.ReferenceEquals(parameter,null))
+   return false;
+
+  Debug.Assert(parameter is Phone);
+
+#if DEBUG
+  var c=Helper__GetModel();
+
+  Debug.Assert(c.Phones.Contains((Phone)parameter));
+#endif
+
+  return true;
+ }//Helper__Cmd__AddPhoneImage__CanExecute
+
+ //-----------------------------------------------------------------------
+ private void Helper__Cmd__DelPhoneImage__Execute(object? parameter)
+ {
+  Debug.Assert(!Object.ReferenceEquals(parameter,null));
+  Debug.Assert(parameter is Phone);
+
+  var phone=(Phone)parameter;
+
+  phone.Image=null;
+ }//Helper__Cmd__DelPhoneImage__Execute
+
+ //-----------------------------------------------------------------------
+ private bool Helper__Cmd__DelPhoneImage__CanExecute(object? parameter)
+ {
+  if(Object.ReferenceEquals(parameter,null))
+   return false;
+
+  Debug.Assert(parameter is Phone);
+
+  var phone=(Phone)parameter;
+
+#if DEBUG
+  var c=Helper__GetModel();
+
+  Debug.Assert(c.Phones.Contains(phone));
+#endif
+
+ if(Object.ReferenceEquals(phone.Image,null))
+  return false;
+
+  return true;
+ }//Helper__Cmd__DelPhoneImage__CanExecute
+
+ //-----------------------------------------------------------------------
  void Helper__RefreshDisplayData()
  {
   var model=Helper__GetModel();
@@ -325,6 +436,10 @@ public partial class MainWindow:Window
  private readonly ICommand m_saveCommand;
 
  private readonly ICommand m_newWindowCommand;
+
+ private readonly ICommand m_addPhoneImageCommand;
+
+ private readonly ICommand m_delPhoneImageCommand;
 };//class MainWindow
 
 ////////////////////////////////////////////////////////////////////////////////

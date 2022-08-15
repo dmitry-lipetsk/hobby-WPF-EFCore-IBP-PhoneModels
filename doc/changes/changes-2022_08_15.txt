@@ -1,0 +1,43 @@
+A support for phone image.
+
+[Source]
+
+[add] images
+ - sample images
+
+Database.sql
+ - [add] IMAGE BLOB SUB_TYPE BINARY
+
+Database.ZIP
+ - updated
+
+source\MainWindow.xaml
+ - [add] Converter__BinaryToImageSource
+
+ - [add] UI for phone image
+
+source\MainWindow.xaml.cs
+ - [add] m_addPhoneImageCommand
+ - [add] m_delPhoneImageCommand
+
+ - constructor
+   - initialization of
+     - m_addPhoneImageCommand
+     - m_delPhoneImageCommand
+
+ - [add] public ICommand Command__AddPhoneImage
+ - [add] public ICommand Command__DelPhoneImage
+
+ - [add] private void Helper__Cmd__AddPhoneImage__Execute(object? parameter)
+ - [add] private bool Helper__Cmd__AddPhoneImage__CanExecute(object? parameter)
+ - [add] private void Helper__Cmd__DelPhoneImage__Execute(object? parameter)
+ - [add] private bool Helper__Cmd__DelPhoneImage__CanExecute(object? parameter)
+
+source\AppConsts.cs
+ - [add] c_ImageFilter
+
+[add] source\Converters\Converter__BinaryToImageSource.cs
+
+source\Data\Phone.cs
+ - [add] public byte[]? Image
+ - [add] private byte[]? m_Image;
