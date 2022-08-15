@@ -125,7 +125,7 @@
                     Grid.Column="0"
                     Width="40"
                     Height="40"
-                    Command="{Binding ElementName=MainWindow1, Path=Command__AddNewPhone}"
+                    Command="{Binding ElementName=MainWindow1, Path=Command__AddPhone}"
                     HorizontalAlignment="Left"/>
             <Button Content="-"
                     Grid.Column="1"

@@ -45,7 +45,7 @@ public partial class MainWindow:Window
   m_model=model;
 
   //----------------------------------------
-  m_addNewPhoneCommand
+  m_addPhoneCommand
    =new RelayCommand
      (Helper__Cmd__AddPhone__Execute);
 
@@ -84,13 +84,13 @@ public partial class MainWindow:Window
  }//MainWindow - model
 
  //-----------------------------------------------------------------------
- public ICommand Command__AddNewPhone
+ public ICommand Command__AddPhone
  {
   get
   {
-   return m_addNewPhoneCommand;
+   return m_addPhoneCommand;
   }//get
- }//Command__AddNewPhone
+ }//Command__AddPhone
 
  //-----------------------------------------------------------------------
  public ICommand Command__DelPhone
@@ -436,7 +436,7 @@ public partial class MainWindow:Window
  private readonly ApplicationViewModel m_model;
 
  //Commands --------------------------------------------------------------
- private readonly ICommand m_addNewPhoneCommand;
+ private readonly ICommand m_addPhoneCommand;
 
  private readonly ICommand m_delPhoneCommand;
 

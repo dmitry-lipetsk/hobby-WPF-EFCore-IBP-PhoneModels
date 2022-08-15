@@ -56,3 +56,20 @@ source\MainWindow.xaml
 source\MainWindow.xaml.cs
  - Helper__Cmd__NewWindow__Execute
    - Setting the size of the new window.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Refactoring. Renaming of Command__AddPhone.
+
+[Source]
+
+source\MainWindow.xaml
+ - switch to Command__AddPhone
+
+source\MainWindow.xaml.cs
+ - [rename] m_addPhoneCommand
+
+ - constructor
+   - work with m_addPhoneCommand
+
+ - [rename] public ICommand Command__AddPhone
