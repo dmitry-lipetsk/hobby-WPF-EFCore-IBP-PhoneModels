@@ -8,7 +8,8 @@ Techonlogies:
  - EntityFrameworkCore v6
  - Lcpi.EntityFrameworkCore.DataProvider.LcpiOleDb
  - LCPI.IBProvider.5
+ - Firebird 3.0
 
 Some "advanced" features weren't implemented but, I'm sure, for the first application it's more than enough :)
 
-![WPF-EFCore-IBP-PhoneModels-2022_08_14](https://user-images.githubusercontent.com/4594554/184547939-ce6b81a1-d9f1-4f24-9012-afcc4901c0ca.gif)
+![WPF-EFCore-IBP-PhoneModels-2022_08_15](https://user-images.githubusercontent.com/4594554/184627426-d55de0c6-3e79-4998-b804-2156a6639016.gif)
