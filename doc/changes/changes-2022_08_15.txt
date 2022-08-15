@@ -41,3 +41,18 @@ source\AppConsts.cs
 source\Data\Phone.cs
  - [add] public byte[]? Image
  - [add] private byte[]? m_Image;
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+UI improvement.
+ - A new label: "Selected Phone"
+ - Setting the size of the new window
+
+[Source]
+
+source\MainWindow.xaml
+ - A new title of left panel: "Selected Phone"
+
+source\MainWindow.xaml.cs
+ - Helper__Cmd__NewWindow__Execute
+   - Setting the size of the new window.

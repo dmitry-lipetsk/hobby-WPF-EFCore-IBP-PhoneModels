@@ -298,6 +298,13 @@ public partial class MainWindow:Window
   newWindow.ListBox__Phones.SelectedItem
    =this.ListBox__Phones.SelectedItem;
 
+  //Clone window size
+  newWindow.Width
+   =this.Width;
+
+  newWindow.Height
+   =this.Height;
+
   newWindow.Show();
 
   newWindow.ListBox__Phones.ScrollIntoView(newWindow.ListBox__Phones.SelectedItem);

@@ -90,7 +90,7 @@
             VerticalAlignment="Stretch" />
 
         <StackPanel Grid.Column="2" DataContext="{Binding ElementName=ListBox__Phones,Path=SelectedItem}" IsEnabled="{Binding ElementName=ListBox__Phones, Path=SelectedItem, Converter={StaticResource Converter__NullToFalse}}">
-            <TextBlock Text="Selected Element" FontWeight="Bold"  />
+            <TextBlock Text="Selected Phone" FontWeight="Bold"  />
             <TextBlock Text="Phone Model" />
             <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock Text="Company" />
