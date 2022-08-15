@@ -1,6 +1,7 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 
 using System;
+using System.Diagnostics;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -45,6 +46,7 @@ public class Phone:INotifyPropertyChanged
 
  //-----------------------------------------------------------------------
  [Key]
+ [BackingField(nameof(m_ID))]
  public long? ID
  {
   get
@@ -52,16 +54,17 @@ public class Phone:INotifyPropertyChanged
    return m_ID;
   }//get
 
-  set
+  private set //disable direct access
   {
-   m_ID=value;
+   Debug.Assert(false);
 
-   Helper__OnPropertyChanged(/*"Title"*/);
+   throw new ApplicationException("[BUG CHECK] This call isn't applicable.");
   }//set
  }//ID
 
  //-----------------------------------------------------------------------
  [Column("TITLE", TypeName="VARCHAR(64) CHARACTER SET UTF8")]
+ [BackingField(nameof(m_Title))]
  public string? Title
  {
   get
@@ -79,6 +82,7 @@ public class Phone:INotifyPropertyChanged
 
  //-----------------------------------------------------------------------
  [Column("COMPANY", TypeName="VARCHAR(64) CHARACTER SET UTF8")]
+ [BackingField(nameof(m_Company))]
  public string? Company
  {
   get
@@ -96,6 +100,7 @@ public class Phone:INotifyPropertyChanged
 
  //-----------------------------------------------------------------------
  [Column("PRICE", TypeName="INTEGER")]
+ [BackingField(nameof(m_Price))]
  public int? Price
  {
   get
@@ -113,6 +118,7 @@ public class Phone:INotifyPropertyChanged
 
  //-----------------------------------------------------------------------
  [Column("IMAGE", TypeName="BLOB SUB_TYPE BINARY")]
+ [BackingField(nameof(m_Image))]
  public byte[]? Image
  {
   get

@@ -202,6 +202,8 @@ public partial class MainWindow:Window
   //
   // I don't understand why it works. It's probably a miracle.
   //
+  // The answer: these are backing fields, Carl.
+  //
 
   foreach(var p in model.Phones)
   {

@@ -73,3 +73,24 @@ source\MainWindow.xaml.cs
    - work with m_addPhoneCommand
 
  - [rename] public ICommand Command__AddPhone
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Backing fields. Explicit definition.
+
+[Source]
+
+source\MainWindow.xaml.cs
+ - Helper__CreateModel
+   - [add] comment
+
+work\source\Data\Phone.cs
+ - ID
+   - [add] attr: BackingField
+   - disabled an access to set
+
+ - Title
+ - Company
+ - Price
+ - Image
+   - [add] attr: BackingField
