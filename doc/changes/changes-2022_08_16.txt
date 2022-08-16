@@ -56,3 +56,27 @@ work\source\MainWindow.xaml.cs
 work\source\Converters\Converter__BinaryToImageSource.cs
  - Convert
    - [use] ImageUtils.BinaryToImageSource
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Refactoring. Moving of MainWindow.Helper__Cmd_xxx to a separate file.
+
+[Source]
+
+[add] work\source\MainWindow-Helper__Cmd.cs
+
+work\source\MainWindow.xaml.cs
+ - [del] Helper__Cmd__AddPhone__Execute
+ - [del] Helper__Cmd__DelPhone__Execute
+ - [del] Helper__Cmd__DelPhone__CanExecute
+ - [del] Helper__Cmd__NewWindow__Execute
+ - [del] Helper__Cmd__Save__Execute
+ - [del] Helper__Cmd__Save__CanExecute
+ - [del] Helper__Cmd__AddPhoneImage__Execute
+ - [del] Helper__Cmd__AddPhoneImage__CanExecute
+ - [del] Helper__Cmd__DelPhoneImage__Execute
+ - [del] Helper__CmdHelper__PhoneHasImage
+ - [del] Helper__Cmd__PastePhoneImage__Execute
+ - [del] Helper__Cmd__PastePhoneImage__CanExecute
+ - [del] Helper__Cmd__CopyPhoneImage__Execute
+    - these methods were moved into MainWindow-Helper__Cmd.cs
