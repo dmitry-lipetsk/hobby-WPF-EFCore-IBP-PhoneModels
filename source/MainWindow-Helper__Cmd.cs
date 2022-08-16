@@ -111,8 +111,6 @@ public partial class MainWindow:Window
        "Save Error",
        "An save error occurred.");
 
-   errWnd.Owner=this;
-
    errWnd.ShowDialog();
   }//catch
  }//Helper__Cmd__Save__Execute

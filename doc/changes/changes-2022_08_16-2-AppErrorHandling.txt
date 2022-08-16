@@ -28,3 +28,14 @@ work\App.xaml
 work\App.xaml.cs
  - Application_DispatcherUnhandledException
    - [use] AppErrorWindow
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Cleanup.
+
+[Source]
+
+source\MainWindow-Helper__Cmd.cs
+ - Helper__Cmd__Save__Execute
+   - [del] errWnd.Owner=this;
+     - this operation already was done in the constructor of errWnd.
