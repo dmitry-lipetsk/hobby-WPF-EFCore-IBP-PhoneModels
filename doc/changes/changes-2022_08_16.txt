@@ -80,3 +80,12 @@ work\source\MainWindow.xaml.cs
  - [del] Helper__Cmd__PastePhoneImage__CanExecute
  - [del] Helper__Cmd__CopyPhoneImage__Execute
     - these methods were moved into MainWindow-Helper__Cmd.cs
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Added save exceptions handling.
+
+[Source]
+
+source\MainWindow-Helper__Cmd.cs
+ - [add] Added save exceptions handling

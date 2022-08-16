@@ -93,12 +93,31 @@ public partial class MainWindow:Window
 
   try
   {
-   model.SaveChanges();
+   try
+   {
+    model.SaveChanges();
+   }
+   finally
+   {
+    this.Cursor=prevCursor;
+   }//finally
   }
-  finally
+  catch(Exception exc)
   {
-   this.Cursor=prevCursor;
-  }//finally
+   for(var e=exc;!Object.ReferenceEquals(e,null);e=e.InnerException)
+   {
+    var r
+     =MessageBox.Show
+       (e.Message,
+        e.Source,
+        MessageBoxButton.OKCancel,
+        MessageBoxImage.Error,
+        MessageBoxResult.OK);
+
+    if(r==MessageBoxResult.Cancel)
+     break;
+   }//for
+  }//catch
  }//Helper__Cmd__Save__Execute
 
  //-----------------------------------------------------------------------
