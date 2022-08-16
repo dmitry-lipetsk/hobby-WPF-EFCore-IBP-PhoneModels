@@ -24,3 +24,13 @@ source\MainWindow.xaml.cs
  - [add] private void Helper__Cmd__PastePhoneImage__Execute(object? parameter)
  - [add] private bool Helper__Cmd__PastePhoneImage__CanExecute(object? parameter)
  - [add] private void Helper__Cmd__CopyPhoneImage__Execute(object? parameter)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Tooltips for image editor buttons.
+
+[Source]
+
+work\source\MainWindow.xaml
+ - Add/Del image buttons
+   - [add] tooltip

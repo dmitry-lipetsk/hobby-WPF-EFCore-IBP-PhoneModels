@@ -102,11 +102,13 @@
                 <Button Content="+"
                     Grid.Column="0"
                     Width="20"
+                    ToolTip="Setup phone image"
                     Command="{Binding ElementName=MainWindow1, Path=Command__AddPhoneImage}"
                     CommandParameter="{Binding}"/>
                 <Button Content="-"
                     Grid.Column="0"
                     Width="20"
+                    ToolTip="Clear phone image"
                     Command="{Binding ElementName=MainWindow1, Path=Command__DelPhoneImage}"
                     CommandParameter="{Binding}"/>
                 <Button Content="P"
