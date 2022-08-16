@@ -71,7 +71,17 @@ public partial class MainWindow:Window
   m_delPhoneImageCommand
    =new RelayCommand
      (Helper__Cmd__DelPhoneImage__Execute,
-      Helper__Cmd__DelPhoneImage__CanExecute);
+      Helper__CmdHelper__PhoneHasImage);
+
+  m_pastePhoneImageCommand
+   =new RelayCommand
+     (Helper__Cmd__PastePhoneImage__Execute,
+      Helper__Cmd__PastePhoneImage__CanExecute);
+
+  m_copyPhoneImageCommand
+   =new RelayCommand
+     (Helper__Cmd__CopyPhoneImage__Execute,
+      Helper__CmdHelper__PhoneHasImage);
 
   //----------------------------------------
   InitializeComponent();
@@ -136,6 +146,24 @@ public partial class MainWindow:Window
    return m_delPhoneImageCommand;
   }//get
  }//Command__DelPhoneImage
+
+ //-----------------------------------------------------------------------
+ public ICommand Command__PastePhoneImage
+ {
+  get
+  {
+   return m_pastePhoneImageCommand;
+  }//get
+ }//Command__PastePhoneImage
+
+ //-----------------------------------------------------------------------
+ public ICommand Command__CopyPhoneImage
+ {
+  get
+  {
+   return m_copyPhoneImageCommand;
+  }//get
+ }//Command__CopyPhoneImage
 
  //Event handlers --------------------------------------------------------
  private void Helper__EvModel__Saved(object? sender,SavedChangesEventArgs args)
@@ -398,7 +426,7 @@ public partial class MainWindow:Window
  }//Helper__Cmd__DelPhoneImage__Execute
 
  //-----------------------------------------------------------------------
- private bool Helper__Cmd__DelPhoneImage__CanExecute(object? parameter)
+ private bool Helper__CmdHelper__PhoneHasImage(object? parameter)
  {
   if(Object.ReferenceEquals(parameter,null))
    return false;
@@ -417,7 +445,98 @@ public partial class MainWindow:Window
   return false;
 
   return true;
- }//Helper__Cmd__DelPhoneImage__CanExecute
+ }//Helper__CmdHelper__PhoneHasImage
+
+ //-----------------------------------------------------------------------
+ private void Helper__Cmd__PastePhoneImage__Execute(object? parameter)
+ {
+  Debug.Assert(!Object.ReferenceEquals(parameter,null));
+  Debug.Assert(parameter is Phone);
+
+  Debug.Assert(Clipboard.ContainsImage());
+
+  BitmapSource
+   bitmapSource
+    =Clipboard.GetImage();
+
+  if(Object.ReferenceEquals(bitmapSource,null))
+  {
+   //WTF?
+   Debug.Assert(false);
+
+   MessageBox.Show
+    ("Clipboard contains image with an unsupported format.",
+     "Error",
+     MessageBoxButton.OK,
+     MessageBoxImage.Error);
+
+   return;
+  }//if
+
+  var phone=(Phone)parameter;
+
+  //--------------------------
+  JpegBitmapEncoder encoder=new JpegBitmapEncoder();
+
+  encoder.QualityLevel=100;
+
+  using MemoryStream stream=new MemoryStream();
+
+  encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+
+  encoder.Save(stream);
+
+  phone.Image=stream.ToArray();
+
+  stream.Close();
+ }//Helper__Cmd__PastePhoneImage__Execute
+
+ //-----------------------------------------------------------------------
+ private bool Helper__Cmd__PastePhoneImage__CanExecute(object? parameter)
+ {
+  if(Object.ReferenceEquals(parameter,null))
+   return false;
+
+  Debug.Assert(parameter is Phone);
+
+  var phone=(Phone)parameter;
+
+#if DEBUG
+  var c=Helper__GetModel();
+
+  Debug.Assert(c.Phones.Contains(phone));
+#endif
+
+  if(Clipboard.ContainsImage())
+   return true;
+
+  return false;
+ }//Helper__Cmd__PatsePhoneImage__CanExecute
+
+ //-----------------------------------------------------------------------
+ private void Helper__Cmd__CopyPhoneImage__Execute(object? parameter)
+ {
+  Debug.Assert(!Object.ReferenceEquals(parameter,null));
+  Debug.Assert(parameter is Phone);
+
+  var phone=(Phone)parameter;
+
+  Debug.Assert(!Object.ReferenceEquals(phone.Image,null));
+
+  //It works but looks very suspicios
+
+  var imageSource_obj
+   =(new ImageSourceConverter()).ConvertFrom(phone.Image);
+
+  Debug.Assert(!Object.ReferenceEquals(imageSource_obj,null));
+
+  Debug.Assert(imageSource_obj is BitmapSource);
+
+  var imageSource
+   =(BitmapSource)imageSource_obj;
+
+  Clipboard.SetImage(imageSource);
+ }//Helper__Cmd__CopyPhoneImage__Execute
 
  //-----------------------------------------------------------------------
  void Helper__RefreshDisplayData()
@@ -449,6 +568,10 @@ public partial class MainWindow:Window
  private readonly ICommand m_addPhoneImageCommand;
 
  private readonly ICommand m_delPhoneImageCommand;
+
+ private readonly ICommand m_pastePhoneImageCommand;
+
+ private readonly ICommand m_copyPhoneImageCommand;
 };//class MainWindow
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -109,6 +109,18 @@
                     Width="20"
                     Command="{Binding ElementName=MainWindow1, Path=Command__DelPhoneImage}"
                     CommandParameter="{Binding}"/>
+                <Button Content="P"
+                    Grid.Column="0"
+                    Width="20"
+                    ToolTip="Paste phone image"
+                    Command="{Binding ElementName=MainWindow1, Path=Command__PastePhoneImage}"
+                    CommandParameter="{Binding}"/>
+                <Button Content="C"
+                    Grid.Column="0"
+                    Width="20"
+                    ToolTip="Copy phone image"
+                    Command="{Binding ElementName=MainWindow1, Path=Command__CopyPhoneImage}"
+                    CommandParameter="{Binding}"/>
             </StackPanel>
             <Image Source="{Binding Image, Converter={StaticResource Converter__BinaryToImageSource}}"/>
         </StackPanel>

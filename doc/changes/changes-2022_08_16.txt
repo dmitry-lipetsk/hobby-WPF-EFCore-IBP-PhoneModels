@@ -1,0 +1,26 @@
+Copy and paste of phone image
+
+[Source]
+
+source\MainWindow.xaml
+ - [add] button for paste phone image
+ - [add] button for copy phone image
+
+source\MainWindow.xaml.cs
+ - [add] m_pastePhoneImageCommand
+ - [add] m_copyPhoneImageCommand
+
+ - constructor
+   - sets m_pastePhoneImageCommand
+   - sets m_copyPhoneImageCommand
+   - m_delPhoneImageCommand
+     - switched to Helper__CmdHelper__PhoneHasImage
+
+ - [add] public ICommand Command__PastePhoneImage
+ - [add] public ICommand Command__CopyPhoneImage
+
+ - [rename] private bool Helper__CmdHelper__PhoneHasImage(object? parameter)
+
+ - [add] private void Helper__Cmd__PastePhoneImage__Execute(object? parameter)
+ - [add] private bool Helper__Cmd__PastePhoneImage__CanExecute(object? parameter)
+ - [add] private void Helper__Cmd__CopyPhoneImage__Execute(object? parameter)
