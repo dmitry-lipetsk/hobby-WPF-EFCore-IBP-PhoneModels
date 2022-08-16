@@ -1,0 +1,9 @@
+Processing of unhandled application exception.
+
+[Source]
+
+App.xaml
+ - [add] DispatcherUnhandledException="Application_DispatcherUnhandledException"
+
+App.xaml.cs
+ - [add] Application_DispatcherUnhandledException
