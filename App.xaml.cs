@@ -15,48 +15,47 @@ namespace MVVM{
 //class App
 
 /// <summary>
-/// Interaction logic for App.xaml
+///  Interaction logic for App.xaml
 /// </summary>
 public partial class App:Application
 {
- private void Application_DispatcherUnhandledException(object sender,System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+ private void Application_DispatcherUnhandledException
+                             (object sender,
+                              System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
  {
-  Debug.Assert(!Object.ReferenceEquals(e,null));
-  Debug.Assert(!Object.ReferenceEquals(e.Exception,null));
-
-  var msgBuilder
-   =new StringBuilder();
-
-  for(var exc=e.Exception;!Object.ReferenceEquals(exc,null);exc=exc.InnerException)
+  if(sm_cUnhandledExceptions!=0)
   {
-   if(msgBuilder.Length!=0)
-   {
-    msgBuilder.Append(Environment.NewLine);
-   }
+   MessageBox.Show
+    ("Recursice unhandled application exceptions!",
+     "Crictical Error",
+     MessageBoxButton.OK);
+  }
+  else
+  {
+   ++sm_cUnhandledExceptions;
 
-   msgBuilder.AppendFormat("------------------------- [{0}]",exc.Source);
-   msgBuilder.Append(Environment.NewLine);
-   msgBuilder.Append(exc.Message);
-  }//for
+   Debug.Assert(!Object.ReferenceEquals(e,null));
+   Debug.Assert(!Object.ReferenceEquals(e.Exception,null));
 
-  string errorMessage
-   =string.Format
-     ("An application error occurred.\n\n"
-      +"Error:{0}\n\n"
-      +"Application will be closed.",
-       msgBuilder.ToString());
+   var errWnd
+    =new AppErrorWindow
+      (/*ownerWindow*/null,
+       e.Exception,
+       "Application Error",
+       "An application error occurred.");;
 
-  var r1
-   =MessageBox.Show
-     (errorMessage,
-       "Application UnhandledException Error",
-       MessageBoxButton.OK,
-       MessageBoxImage.Error);
+   errWnd.ShowDialog();
+
+   --sm_cUnhandledExceptions;
+  }//else
 
   Application.Current.Shutdown();
 
   e.Handled=true;
  }//Application_DispatcherUnhandledException
+
+ //-----------------------------------------------------------------------
+ static long sm_cUnhandledExceptions;
 };//class App
 
 ////////////////////////////////////////////////////////////////////////////////

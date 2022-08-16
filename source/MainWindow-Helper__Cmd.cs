@@ -104,19 +104,16 @@ public partial class MainWindow:Window
   }
   catch(Exception exc)
   {
-   for(var e=exc;!Object.ReferenceEquals(e,null);e=e.InnerException)
-   {
-    var r
-     =MessageBox.Show
-       (e.Message,
-        e.Source,
-        MessageBoxButton.OKCancel,
-        MessageBoxImage.Error,
-        MessageBoxResult.OK);
+   var errWnd
+    =new AppErrorWindow
+      (/*ownerWindow*/this,
+       exc,
+       "Save Error",
+       "An save error occurred.");
 
-    if(r==MessageBoxResult.Cancel)
-     break;
-   }//for
+   errWnd.Owner=this;
+
+   errWnd.ShowDialog();
   }//catch
  }//Helper__Cmd__Save__Execute
 

@@ -1,0 +1,71 @@
+﻿<Window x:Name="AppErrorWindow1" x:Class="MVVM.AppErrorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:draw="clr-namespace:System.Drawing;assembly=System.Drawing"
+        xmlns:local="clr-namespace:MVVM"
+        mc:Ignorable="d"
+        Icon="{Binding Source={x:Static draw:SystemIcons.Error}, Converter={StaticResource Converter__IconToImageSource}, Mode=OneWay}"
+        Title="Application Error" Height="300" Width="500">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="5, 5, 0, 0" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="5, 5, 0, 0" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="5, 5, 0, 0" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5, 5, 0, 0" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,0,5,5" FocusManager.FocusedElement="{Binding ElementName=ComboBox__ErrorSources}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock x:Name="TextBlock__BaseDescription" Text="An application error occurred."/>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="Exception Data:" />
+
+            <ComboBox Grid.Row="1"
+                      x:Name="ComboBox__ErrorSources"
+                      ItemsSource="{Binding ElementName=AppErrorWindow1,Path=Exceptions}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=Source}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBox Grid.Row="2"
+                     Text="{Binding ElementName=ComboBox__ErrorSources, Path=SelectedItem.Message, Mode=OneWay}"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"/>
+        </Grid>
+
+        <StackPanel Grid.Row="2">
+            <Button Content="OK" Width="80" HorizontalAlignment="Right" Click="Button_Click" IsDefault="True" IsCancel="true"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -7,3 +7,24 @@ App.xaml
 
 App.xaml.cs
  - [add] Application_DispatcherUnhandledException
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Special window for displaying an exception data.
+
+[Source]
+
+[add] source\AppErrorWindow.xaml
+[add] source\AppErrorWindow.xaml.cs
+[add] source\Converters\Converter__IconToImageSource.cs
+
+source\MainWindow-Helper__Cmd.cs
+ - private void Helper__Cmd__Save__Execute(object? parameter)
+   - [use] AppErrorWindow
+
+work\App.xaml
+ - [add] Converter__IconToImageSource
+
+work\App.xaml.cs
+ - Application_DispatcherUnhandledException
+   - [use] AppErrorWindow
