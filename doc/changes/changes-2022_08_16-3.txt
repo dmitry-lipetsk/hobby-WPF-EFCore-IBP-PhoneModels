@@ -1,0 +1,7 @@
+English.
+
+[Source]
+
+work\source\MainWindow-Helper__Cmd.cs
+ - private void Helper__Cmd__Save__Execute(object? parameter)
+   - English...

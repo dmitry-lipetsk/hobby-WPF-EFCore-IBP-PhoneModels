@@ -109,7 +109,7 @@ public partial class MainWindow:Window
       (/*ownerWindow*/this,
        exc,
        "Save Error",
-       "An save error occurred.");
+       "A save error occurred.");
 
    errWnd.ShowDialog();
   }//catch
