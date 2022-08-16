@@ -27,9 +27,11 @@ class Converter__BinaryToImageSource:IValueConverter
 
   Debug.Assert(value is byte[]);
 
-  var result
-   =(ImageSource?)(new ImageSourceConverter()).ConvertFrom(value);
+  ImageSource?
+   result
+    =ImageUtils.BinaryToImageSource((byte[])value);
 
+  //expected
   Debug.Assert(!Object.ReferenceEquals(result,null));
 
   return result;

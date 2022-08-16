@@ -473,22 +473,17 @@ public partial class MainWindow:Window
    return;
   }//if
 
-  var phone=(Phone)parameter;
+  var phone
+   =(Phone)parameter;
 
-  //--------------------------
-  JpegBitmapEncoder encoder=new JpegBitmapEncoder();
+  var imageData
+   =ImageUtils.BitmapSourceToBinary
+     (bitmapSource);
 
-  encoder.QualityLevel=100;
+  //Expected
+  Debug.Assert(!Object.ReferenceEquals(imageData,null));
 
-  using MemoryStream stream=new MemoryStream();
-
-  encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
-
-  encoder.Save(stream);
-
-  phone.Image=stream.ToArray();
-
-  stream.Close();
+  phone.Image=imageData;
  }//Helper__Cmd__PastePhoneImage__Execute
 
  //-----------------------------------------------------------------------
@@ -523,17 +518,13 @@ public partial class MainWindow:Window
 
   Debug.Assert(!Object.ReferenceEquals(phone.Image,null));
 
-  //It works but looks very suspicios
+  BitmapSource?
+   imageSource
+    =ImageUtils.BinaryToBitmapSource
+      (phone.Image);
 
-  var imageSource_obj
-   =(new ImageSourceConverter()).ConvertFrom(phone.Image);
-
-  Debug.Assert(!Object.ReferenceEquals(imageSource_obj,null));
-
-  Debug.Assert(imageSource_obj is BitmapSource);
-
-  var imageSource
-   =(BitmapSource)imageSource_obj;
+  //expected
+  Debug.Assert(!Object.ReferenceEquals(imageSource,null));
 
   Clipboard.SetImage(imageSource);
  }//Helper__Cmd__CopyPhoneImage__Execute

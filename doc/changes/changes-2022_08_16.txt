@@ -34,3 +34,25 @@ Tooltips for image editor buttons.
 work\source\MainWindow.xaml
  - Add/Del image buttons
    - [add] tooltip
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Refactoring - ImageUtils.
+
+[Source]
+
+[add] work\source\ImageUtils.cs
+ - BinaryToImageSource
+ - BinaryToBitmapSource
+ - BitmapSourceToBinary
+
+work\source\MainWindow.xaml.cs
+ - Helper__Cmd__PastePhoneImage__Execute
+   - [use] ImageUtils.BitmapSourceToBinary
+
+ - Helper__Cmd__CopyPhoneImage__Execute
+   - [use] ImageUtils.BinaryToBitmapSource
+
+work\source\Converters\Converter__BinaryToImageSource.cs
+ - Convert
+   - [use] ImageUtils.BinaryToImageSource
