@@ -347,7 +347,7 @@ public partial class MainWindow:Window
    =Helper__GetModel();
 
   var prevCursor=this.Cursor;
-  
+
   this.Cursor=Cursors.Wait;
 
   try
