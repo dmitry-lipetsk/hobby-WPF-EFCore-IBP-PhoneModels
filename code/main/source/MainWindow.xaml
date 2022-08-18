@@ -64,7 +64,8 @@
             <ListBox
                 x:Name="ListBox__Phones"
                 Grid.Row="0"
-                ItemsSource="{Binding Phones}">
+                ItemsSource="{Binding Phones}"
+                AutomationProperties.AutomationId="ListBox__Phones">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -92,12 +93,12 @@
         <StackPanel Grid.Column="2" DataContext="{Binding ElementName=ListBox__Phones,Path=SelectedItem}" IsEnabled="{Binding ElementName=ListBox__Phones, Path=SelectedItem, Converter={StaticResource Converter__NullToFalse}}">
             <TextBlock Text="Selected Phone" FontWeight="Bold"  />
             <TextBlock Text="Phone Model" />
-            <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.AutomationId="TextBox__SelectedPhone__Model" />
             <TextBlock Text="Company" />
-            <TextBox Text="{Binding Company, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Text="{Binding Company, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.AutomationId="TextBox__SelectedPhone__Company" />
             <TextBlock Text="Price" />
-            <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock x:Name="TextBox__ID" Text="{Binding ID, StringFormat='ID: {0}', Converter={StaticResource Converter__NullToNo}}" />
+            <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.AutomationId="TextBox__SelectedPhone__Price" />
+            <TextBlock Text="{Binding ID, StringFormat='ID: {0}', Converter={StaticResource Converter__NullToNo}}" AutomationProperties.AutomationId="TextBlock__SelectedPhone__ID" />
             <StackPanel Orientation="Horizontal">
                 <Button Content="+"
                     Grid.Column="0"
@@ -140,25 +141,29 @@
                     Width="40"
                     Height="40"
                     Command="{Binding ElementName=MainWindow1, Path=Command__AddPhone}"
-                    HorizontalAlignment="Left"/>
+                    HorizontalAlignment="Left"
+                    AutomationProperties.AutomationId="Button__AddPhone"/>
             <Button Content="-"
                     Grid.Column="1"
                     Width="40"
                     Height="40"
                     Command="{Binding ElementName=MainWindow1, Path=Command__DelPhone}"
                     CommandParameter="{Binding ElementName=ListBox__Phones, Path=SelectedItem}"
-                    HorizontalAlignment="Left"/>
+                    HorizontalAlignment="Left"
+                    AutomationProperties.AutomationId="Button__DelPhone"/>
             <Button Content="SAVE"
                     Grid.Column="2"
                     Width="40"
                     Height="40"
                     Command="{Binding ElementName=MainWindow1, Path=Command__Save}"
-                    HorizontalAlignment="Left"/>
+                    HorizontalAlignment="Left"
+                    AutomationProperties.AutomationId="Button__Save"/>
             <Button Content="New Window"
                     Grid.Column="3"
                     Width="80"
                     Height="40"
-                    Command="{Binding ElementName=MainWindow1, Path=Command__NewWindow}" HorizontalAlignment="Right"/>
+                    Command="{Binding ElementName=MainWindow1, Path=Command__NewWindow}"
+                    HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
 </Window>

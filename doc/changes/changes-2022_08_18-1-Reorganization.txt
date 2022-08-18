@@ -1,0 +1,14 @@
+Definition of AutomationIDs.
+
+[Source]
+
+code\main\source\MainWindow.xaml
+ - AutomationIDs:
+   - ListBox__Phones
+   - TextBox__SelectedPhone__Model
+   - TextBox__SelectedPhone__Company
+   - TextBox__SelectedPhone__Price
+   - TextBlock__SelectedPhone__ID
+   - Button__AddPhone
+   - Button__DelPhone
+   - Button__Save
