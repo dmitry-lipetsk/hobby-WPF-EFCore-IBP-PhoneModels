@@ -1,7 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneModels", "code\main\PhoneModels.csproj", "{019D18E5-60A0-4850-A99F-53929504E2BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "code", "code", "{EDF130B9-E14D-4F7E-BAB1-09184E6CF2D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{EDB6A928-26B2-4BC4-9123-8B43B0C3B089}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "simple-app-controller", "tests\simple-app-controller\simple-app-controller.csproj", "{3949A0C3-DD46-4124-B921-62D85F2B65A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,9 +21,17 @@ Global
 		{019D18E5-60A0-4850-A99F-53929504E2BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{019D18E5-60A0-4850-A99F-53929504E2BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{019D18E5-60A0-4850-A99F-53929504E2BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3949A0C3-DD46-4124-B921-62D85F2B65A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3949A0C3-DD46-4124-B921-62D85F2B65A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3949A0C3-DD46-4124-B921-62D85F2B65A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3949A0C3-DD46-4124-B921-62D85F2B65A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{019D18E5-60A0-4850-A99F-53929504E2BF} = {EDF130B9-E14D-4F7E-BAB1-09184E6CF2D1}
+		{3949A0C3-DD46-4124-B921-62D85F2B65A3} = {EDB6A928-26B2-4BC4-9123-8B43B0C3B089}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE8A17DD-C8F7-4132-9A41-F6D7A5DD064E}
