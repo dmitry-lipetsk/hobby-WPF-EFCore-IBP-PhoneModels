@@ -9,6 +9,7 @@ Technologies:
  - Lcpi.EntityFrameworkCore.DataProvider.LcpiOleDb
  - LCPI.IBProvider.5
  - Firebird v3.0
+ - Automated testing vai [FlaUI Framework](https://github.com/FlaUI/FlaUI)
 
 Some "advanced" features weren't implemented but, I'm sure, for the first application it's more than enough :)
 
