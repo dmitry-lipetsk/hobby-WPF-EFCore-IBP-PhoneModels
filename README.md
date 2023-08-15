@@ -14,3 +14,7 @@ Technologies:
 Some "advanced" features weren't implemented but, I'm sure, for the first application it's more than enough :)
 
 ![WPF-EFCore-IBP-PhoneModels-2022_08_15](https://user-images.githubusercontent.com/4594554/184627426-d55de0c6-3e79-4998-b804-2156a6639016.gif)
+
+**Automatied testing**
+
+![WPF-EFCore-IBProvider-AutoTest--2023_08_15__001](https://github.com/dmitry-lipetsk/hobby-WPF-EFCore-IBP-PhoneModels/assets/4594554/8063cd78-c272-464c-ad09-cde3e33546cf)
