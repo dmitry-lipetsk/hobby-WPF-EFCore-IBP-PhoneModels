@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FlaUI.UIA3" Version="3.2.0" />
+    <PackageReference Include="FlaUI.UIA3" Version="4.0.0" />
     <PackageReference Include="lcpi.data.oledb" Version="1.27.0.4751" />
   </ItemGroup>
 
