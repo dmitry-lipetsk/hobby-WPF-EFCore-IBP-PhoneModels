@@ -8,9 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lcpi.EntityFrameworkCore.DataProvider.LcpiOleDb" Version="6.0.8.100" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.8" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+    <PackageReference Include="Lcpi.EntityFrameworkCore.DataProvider.LcpiOleDb" Version="6.0.21.100" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.21" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
